@@ -1,0 +1,18 @@
+<!-- <mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of MenuItems.getMenuItem()" routerLinkActive="selected" >
+        <a appAccordionToggle [routerLink]="['/tcv', menuitem.state]" *ngIf="(menuitem.role ==='' || menuitem.role === tokenPayload.role)">
+            <mat-icon>{{ menuitem.icon}}</mat-icon>
+            <span>{{menuitem.name}}</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+</mat-nav-list> -->
+<mat-nav-list appAccordion>
+  <mat-list-item appAccordionLink *ngFor="let menuitem of menuList" routerLinkActive="selected">
+    <a appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="(menuitem.role === '' || menuitem.role === tokenPayload.role)">
+      <mat-icon>{{ menuitem.icon }}</mat-icon>
+      <span>{{ menuitem.name }}</span>
+      <span fxFlex></span>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

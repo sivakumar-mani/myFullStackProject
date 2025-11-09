@@ -1,0 +1,45 @@
+<mat-card>
+    <h5>Manage Product</h5>
+    <button mat-flat-button color="primary" (click)="handleAddProduct()" class="float-right"> Add Product</button>
+</mat-card>
+<mat-card>
+    <mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+</mat-card>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="categoryName">
+    <th mat-header-cell *matHeaderCellDef>Category Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.categoryName}}</td>
+  </ng-container>
+    <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let element">{{ element.description}}</td>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let element">{{element.price}}</td>
+  </ng-container>
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <th mat-cell *matCellDef="let element" class="action-link">
+    <button mat-icon-button color="primary" matTooltip="Edit" (click)="handleEditAction(element)">Edit</button>
+    <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)">Delete</button>
+    <mat-slide-toggle (change)="onChange($event.checked,element.id)" matTooltip="Activate or Deactivate Product"
+    [checked]="element.status">
+    </mat-slide-toggle>
+    </th>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

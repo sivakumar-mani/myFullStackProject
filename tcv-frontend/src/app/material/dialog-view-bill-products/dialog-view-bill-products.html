@@ -1,0 +1,61 @@
+<mat-toolbar color="primary">
+<mat-toolbar-row fxLayout="row">
+    <span class="title-center">View Bill</span>
+</mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <table id="customer">
+        <tr>
+            <td>Name : {{data.name}}</td>
+              <td>Email : {{data.email}}</td>
+        </tr>
+        <tr>
+            <td>Payment Method : {{data.paymentMethod}}</td>
+              <td>Total : {{data.total}}</td>
+        </tr>
+    </table>
+    <div class="responsive-table" style="height: 300px;">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+    <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef>Category </th>
+    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+  </ng-container>
+    <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+    <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+    <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef> Total </th>
+    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <!-- <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element" class="ac"> 
+        <a (click)="handleEditAction(element)">Edit</a>
+    </td>
+  </ng-container> -->
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+    <div class="d-flex justify-content-between">
+ <button matButton="filled" mat-dialog-close>close</button>
+ </div>
+</mat-dialog-content>
